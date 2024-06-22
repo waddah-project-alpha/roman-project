@@ -1,35 +1,32 @@
 package com.adobe.integer_to_roman.converter.service;
 
 import com.adobe.integer_to_roman.converter.repository.IntegerToRomanConverterRepository;
-import com.adobe.integer_to_roman.converter.service.internal.LargeNumberConversionService;
-import com.adobe.integer_to_roman.converter.service.internal.SmallNumberConversionService;
+import com.adobe.integer_to_roman.converter.service.internal.LongNotationConversionService;
+import com.adobe.integer_to_roman.converter.service.internal.ShortNotationConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.util.TreeMap;
 
 @Service
 public class IntegerToRomanConverterService {
 
     @Autowired
-    private SmallNumberConversionService smallNumberConversionService;
+    private ShortNotationConversionService shortNotationConversionService;
 
     @Autowired
-    private LargeNumberConversionService largeNumberConversionService;
+    private LongNotationConversionService longNotationConversionService;
 
     @Autowired
     private IntegerToRomanConverterRepository repository;
 
     public String convert(BigInteger numberToConvert, boolean useShortNotation) {
-        if ( smallNumberConversionService.canConvertNumber(numberToConvert) ) {
-            return smallNumberConversionService.convert(numberToConvert, useShortNotation);
+        if (useShortNotation) {
+            return shortNotationConversionService.convert(numberToConvert);
         }
-
-        if ( largeNumberConversionService.canConvertNumber(numberToConvert) ) {
-            return largeNumberConversionService.convert(numberToConvert, useShortNotation);
+        else
+        {
+            return longNotationConversionService.convert(numberToConvert);
         }
-
-        throw new IllegalArgumentException("Invalid number - cannot convert");
     }
 }

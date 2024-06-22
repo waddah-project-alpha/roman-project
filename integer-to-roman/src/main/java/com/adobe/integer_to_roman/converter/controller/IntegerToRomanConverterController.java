@@ -1,5 +1,6 @@
 package com.adobe.integer_to_roman.converter.controller;
 
+import com.adobe.integer_to_roman.converter.service.IntegerToRomanConversionValidatorService;
 import com.adobe.integer_to_roman.converter.service.IntegerToRomanConverterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,14 @@ public class IntegerToRomanConverterController {
     @Autowired
     private IntegerToRomanConverterService integerToRomanConverterService;
 
+    @Autowired
+    private IntegerToRomanConversionValidatorService integerToRomanConversionValidatorService;
+
     @GetMapping
-    public String convertIntegerToRoman(@RequestParam(name = "query") BigInteger numberToConvert,
+    public String convertIntegerToRoman(@RequestParam(name = "query") String numberToConvert,
                                         @RequestParam(required = false, defaultValue = "true") boolean useShortNotation)
     {
-        return integerToRomanConverterService.convert(numberToConvert, useShortNotation);
+        integerToRomanConversionValidatorService.validateInput(numberToConvert);
+        return integerToRomanConverterService.convert(new BigInteger(numberToConvert), useShortNotation);
     }
 }

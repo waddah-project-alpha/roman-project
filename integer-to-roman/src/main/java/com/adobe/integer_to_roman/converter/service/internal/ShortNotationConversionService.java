@@ -8,18 +8,13 @@ import java.math.BigInteger;
 import java.util.TreeMap;
 
 @Service
-public class SmallNumberConversionService extends BaseConversionService{
+public class ShortNotationConversionService extends BaseConversionService{
 
     @Autowired
     private IntegerToRomanConverterRepository repository;
 
     @Override
-    protected TreeMap<BigInteger, String> getMap(boolean useShortNotation) {
-        return useShortNotation ? repository.getMapWithShortNotation() : repository.getMapWithoutShortNotation();
-    }
-
-    @Override
-    protected BigInteger getThreshold() {
-        return new BigInteger("3999");
+    protected TreeMap<BigInteger, String> getMap() {
+        return repository.getVinculumShortNotation();
     }
 }

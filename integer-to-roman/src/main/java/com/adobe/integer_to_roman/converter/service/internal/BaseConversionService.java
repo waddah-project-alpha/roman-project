@@ -1,24 +1,23 @@
 package com.adobe.integer_to_roman.converter.service.internal;
 
+import com.adobe.integer_to_roman.converter.service.IntegerToRomanConversionValidatorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.TreeMap;
 
-@Service
 public abstract class BaseConversionService {
 
-    protected abstract TreeMap<BigInteger, String> getMap(boolean useShortNotation);
-    protected abstract BigInteger getThreshold();
+    @Autowired
+    private IntegerToRomanConversionValidatorService integerToRomanConversionValidatorService;
 
-    public boolean canConvertNumber(BigInteger numberToConvert)
-    {
-        return numberToConvert.compareTo(getThreshold()) < 0;
-    }
+    protected abstract TreeMap<BigInteger, String> getMap();
 
-    public String convert(BigInteger numberToConvert, boolean useShortNotation)
+    public String convert(BigInteger numberToConvert)
     {
-        return convertToRoman(numberToConvert, getMap(useShortNotation));
+        integerToRomanConversionValidatorService.validateInput(numberToConvert);
+        return convertToRoman(numberToConvert, getMap());
     }
 
     private String convertToRoman(BigInteger numberToConvert, TreeMap<BigInteger, String> map) {

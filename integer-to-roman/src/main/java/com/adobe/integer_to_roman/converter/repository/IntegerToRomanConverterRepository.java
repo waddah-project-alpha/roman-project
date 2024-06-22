@@ -9,51 +9,25 @@ import java.util.TreeMap;
 @Repository
 public class IntegerToRomanConverterRepository {
 
-    private final TreeMap<BigInteger, String> originalMap = new TreeMap<>();
-    private final TreeMap<BigInteger, String> shortNotationMap = new TreeMap<>();
     private final TreeMap<BigInteger, String> vinculumMap = new TreeMap<>();
     private final TreeMap<BigInteger, String> vinculumShortNotationMap = new TreeMap<>();
-    private final TreeMap<BigInteger, String> originalWithShortNotationMap = new TreeMap<>();
-    private final TreeMap<BigInteger, String> vinculumWithShortNotationMap = new TreeMap<>();
 
     @PostConstruct
     private void initialize()
     {
-        initializeDefaultMap();
-        initializeExtendedMap();
         initializeVinculumMap();
-        initializeVinculumExtendedMap();
-
-        originalWithShortNotationMap.putAll(originalMap);
-        originalWithShortNotationMap.putAll(shortNotationMap);
-        vinculumWithShortNotationMap.putAll(vinculumMap);
-        vinculumWithShortNotationMap.putAll(vinculumShortNotationMap);
-    }
-
-    private void initializeDefaultMap()
-    {
-        originalMap.put(new BigInteger("1"), "I");
-        originalMap.put(new BigInteger("5"), "V");
-        originalMap.put(new BigInteger("10"), "X");
-        originalMap.put(new BigInteger("50"), "L");
-        originalMap.put(new BigInteger("100"), "C");
-        originalMap.put(new BigInteger("500"), "D");
-        originalMap.put(new BigInteger("1000"), "M");
-    }
-
-    private void initializeExtendedMap()
-    {
-        shortNotationMap.put(new BigInteger("4"), "IV");
-        shortNotationMap.put(new BigInteger("9"), "IX");
-        shortNotationMap.put(new BigInteger("40"), "XL");
-        shortNotationMap.put(new BigInteger("90"), "XC");
-        shortNotationMap.put(new BigInteger("400"), "CD");
-        shortNotationMap.put(new BigInteger("900"), "CM");
+        initializeVinculumShortNotationMap();
     }
 
     private void initializeVinculumMap()
     {
-        vinculumMap.putAll(originalMap);
+        vinculumMap.put(new BigInteger("1"), "I");
+        vinculumMap.put(new BigInteger("5"), "V");
+        vinculumMap.put(new BigInteger("10"), "X");
+        vinculumMap.put(new BigInteger("50"), "L");
+        vinculumMap.put(new BigInteger("100"), "C");
+        vinculumMap.put(new BigInteger("500"), "D");
+        vinculumMap.put(new BigInteger("1000"), "M");
         vinculumMap.put(new BigInteger("5000"), "V̅");
         vinculumMap.put(new BigInteger("10000"), "X̅");
         vinculumMap.put(new BigInteger("50000"), "L̅");
@@ -68,9 +42,15 @@ public class IntegerToRomanConverterRepository {
         vinculumMap.put(new BigInteger("1000000000"), "M̿");
     }
 
-    private void initializeVinculumExtendedMap()
+    private void initializeVinculumShortNotationMap()
     {
-        vinculumShortNotationMap.putAll(shortNotationMap);
+        vinculumShortNotationMap.putAll(vinculumMap);
+        vinculumShortNotationMap.put(new BigInteger("4"), "IV");
+        vinculumShortNotationMap.put(new BigInteger("9"), "IX");
+        vinculumShortNotationMap.put(new BigInteger("40"), "XL");
+        vinculumShortNotationMap.put(new BigInteger("90"), "XC");
+        vinculumShortNotationMap.put(new BigInteger("400"), "CD");
+        vinculumShortNotationMap.put(new BigInteger("900"), "CM");
         vinculumShortNotationMap.put(new BigInteger("4000"), "I̅V̅");
         vinculumShortNotationMap.put(new BigInteger("9000"), "I̅X̅");
         vinculumShortNotationMap.put(new BigInteger("40000"), "X̅L̅");
@@ -85,22 +65,12 @@ public class IntegerToRomanConverterRepository {
         vinculumShortNotationMap.put(new BigInteger("900000000"), "C̿M̿");
     }
 
-    public TreeMap<BigInteger, String> getMapWithShortNotation()
+    public TreeMap<BigInteger, String> getVinculumShortNotation()
     {
-        return originalWithShortNotationMap;
+        return vinculumShortNotationMap;
     }
 
-    public TreeMap<BigInteger, String> getMapWithoutShortNotation()
-    {
-        return originalMap;
-    }
-
-    public TreeMap<BigInteger, String> getVinculumMapWithShortNotation()
-    {
-        return vinculumWithShortNotationMap;
-    }
-
-    public TreeMap<BigInteger, String> getVinculumMapWithoutShortNotation()
+    public TreeMap<BigInteger, String> getVinculumLongNotation()
     {
         return vinculumMap;
     }
