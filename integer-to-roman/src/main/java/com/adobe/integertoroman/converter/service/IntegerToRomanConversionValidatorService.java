@@ -1,6 +1,6 @@
-package com.adobe.integer_to_roman.converter.service;
+package com.adobe.integertoroman.converter.service;
 
-import com.adobe.integer_to_roman.exceptions.InvalidIntegerToRomanInputException;
+import com.adobe.integertoroman.exceptions.InvalidIntegerToRomanInputException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

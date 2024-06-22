@@ -1,4 +1,4 @@
-package com.adobe.integer_to_roman.converter.repository;
+package com.adobe.integertoroman.converter.repository;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;

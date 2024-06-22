@@ -1,4 +1,4 @@
-package com.adobe.integer_to_roman;
+package com.adobe.integertoroman;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

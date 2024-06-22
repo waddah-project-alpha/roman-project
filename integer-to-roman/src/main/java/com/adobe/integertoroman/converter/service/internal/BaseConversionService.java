@@ -1,8 +1,7 @@
-package com.adobe.integer_to_roman.converter.service.internal;
+package com.adobe.integertoroman.converter.service.internal;
 
-import com.adobe.integer_to_roman.converter.service.IntegerToRomanConversionValidatorService;
+import com.adobe.integertoroman.converter.service.IntegerToRomanConversionValidatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.TreeMap;

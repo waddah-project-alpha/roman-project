@@ -1,4 +1,4 @@
-package com.adobe.integer_to_roman.config;
+package com.adobe.integertoroman.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

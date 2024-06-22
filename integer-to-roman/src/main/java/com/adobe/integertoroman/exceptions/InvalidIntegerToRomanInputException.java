@@ -1,4 +1,4 @@
-package com.adobe.integer_to_roman.exceptions;
+package com.adobe.integertoroman.exceptions;
 
 public class InvalidIntegerToRomanInputException extends RuntimeException {
 

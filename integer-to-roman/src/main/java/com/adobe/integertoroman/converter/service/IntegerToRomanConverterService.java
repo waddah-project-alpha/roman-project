@@ -1,8 +1,8 @@
-package com.adobe.integer_to_roman.converter.service;
+package com.adobe.integertoroman.converter.service;
 
-import com.adobe.integer_to_roman.converter.repository.IntegerToRomanConverterRepository;
-import com.adobe.integer_to_roman.converter.service.internal.LongNotationConversionService;
-import com.adobe.integer_to_roman.converter.service.internal.ShortNotationConversionService;
+import com.adobe.integertoroman.converter.repository.IntegerToRomanConverterRepository;
+import com.adobe.integertoroman.converter.service.internal.LongNotationConversionService;
+import com.adobe.integertoroman.converter.service.internal.ShortNotationConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.adobe.integer_to_roman.controlleradvice;
+package com.adobe.integertoroman.controlleradvice;
 
-import com.adobe.integer_to_roman.exceptions.InvalidIntegerToRomanInputException;
+import com.adobe.integertoroman.exceptions.InvalidIntegerToRomanInputException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice
 @RestController
 public class GlobalControllerExceptionHandling {
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler(InvalidIntegerToRomanInputException.class)
     public ResponseEntity<String> handleInvalidInput(InvalidIntegerToRomanInputException ex)
     {
         return new ResponseEntity<>("Invalid input received. Error: " + ex.getMessage(),

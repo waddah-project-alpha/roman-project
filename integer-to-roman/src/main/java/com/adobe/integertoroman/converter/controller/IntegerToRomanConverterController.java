@@ -1,7 +1,7 @@
-package com.adobe.integer_to_roman.converter.controller;
+package com.adobe.integertoroman.converter.controller;
 
-import com.adobe.integer_to_roman.converter.service.IntegerToRomanConversionValidatorService;
-import com.adobe.integer_to_roman.converter.service.IntegerToRomanConverterService;
+import com.adobe.integertoroman.converter.service.IntegerToRomanConversionValidatorService;
+import com.adobe.integertoroman.converter.service.IntegerToRomanConverterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
