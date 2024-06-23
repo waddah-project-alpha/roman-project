@@ -8,7 +8,7 @@ import java.math.BigInteger;
 import java.util.TreeMap;
 
 @Service
-public class LongNotationConversionService extends BaseConversionService{
+public class LongNotationConversionService extends BaseConversionService {
 
     @Autowired
     private IntegerToRomanConverterRepository repository;

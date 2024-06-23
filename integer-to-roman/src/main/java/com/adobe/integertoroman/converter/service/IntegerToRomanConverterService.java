@@ -21,11 +21,9 @@ public class IntegerToRomanConverterService {
     private IntegerToRomanConverterRepository repository;
 
     public String convert(BigInteger numberToConvert, boolean useShortNotation) {
-        if (useShortNotation) {
+        if ( useShortNotation ) {
             return shortNotationConversionService.convert(numberToConvert);
-        }
-        else
-        {
+        } else {
             return longNotationConversionService.convert(numberToConvert);
         }
     }

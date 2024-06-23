@@ -13,14 +13,12 @@ public class IntegerToRomanConverterRepository {
     private final TreeMap<BigInteger, String> vinculumShortNotationMap = new TreeMap<>();
 
     @PostConstruct
-    private void initialize()
-    {
+    private void initialize() {
         initializeVinculumMap();
         initializeVinculumShortNotationMap();
     }
 
-    private void initializeVinculumMap()
-    {
+    private void initializeVinculumMap() {
         vinculumMap.put(new BigInteger("1"), "I");
         vinculumMap.put(new BigInteger("5"), "V");
         vinculumMap.put(new BigInteger("10"), "X");
@@ -42,8 +40,7 @@ public class IntegerToRomanConverterRepository {
         vinculumMap.put(new BigInteger("1000000000"), "M̿");
     }
 
-    private void initializeVinculumShortNotationMap()
-    {
+    private void initializeVinculumShortNotationMap() {
         vinculumShortNotationMap.putAll(vinculumMap);
         vinculumShortNotationMap.put(new BigInteger("4"), "IV");
         vinculumShortNotationMap.put(new BigInteger("9"), "IX");
@@ -65,13 +62,11 @@ public class IntegerToRomanConverterRepository {
         vinculumShortNotationMap.put(new BigInteger("900000000"), "C̿M̿");
     }
 
-    public TreeMap<BigInteger, String> getVinculumShortNotation()
-    {
+    public TreeMap<BigInteger, String> getVinculumShortNotation() {
         return vinculumShortNotationMap;
     }
 
-    public TreeMap<BigInteger, String> getVinculumLongNotation()
-    {
+    public TreeMap<BigInteger, String> getVinculumLongNotation() {
         return vinculumMap;
     }
 }

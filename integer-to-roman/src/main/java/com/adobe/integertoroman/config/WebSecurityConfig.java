@@ -11,8 +11,13 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests.requestMatchers("/romannumeral").permitAll().anyRequest().authenticated())
-                .logout(LogoutConfigurer::permitAll);
+        http.authorizeHttpRequests((requests) -> requests.requestMatchers("/romannumeral")
+                                                         .permitAll()
+                                                         .requestMatchers("/actuator/*")
+                                                         .permitAll()
+                                                         .anyRequest()
+                                                         .authenticated())
+                                                         .logout(LogoutConfigurer::permitAll);
         return http.build();
     }
 

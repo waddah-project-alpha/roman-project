@@ -20,7 +20,7 @@ public class ApplicationLoggingAspect {
 
     private final static List<String> SENSITIVE_PARAM_NAMES = Arrays.asList("password", "userId", "userName", "age");
 
-    @Around("within(com.adobe.integertoroman.converter.service..*) || within(com.adobe.integertoroman.converter.controller..*)")
+    @Around("within(com.adobe.integertoroman.*.service..*) || within(com.adobe.integertoroman.*.controller..*)")
     private Object logMethodExecution(ProceedingJoinPoint joinPoint) throws Throwable {
 
         CodeSignature codeSignature = (CodeSignature) joinPoint.getSignature();
@@ -29,22 +29,20 @@ public class ApplicationLoggingAspect {
         final Object[] args = joinPoint.getArgs();
         final String[] argNames = codeSignature.getParameterNames();
         String argNamesAndValues = IntStream.range(0, args.length)
-                                         .mapToObj(i -> obfuscateSensitiveData(argNames[i], args[i]))
-                                         .collect(Collectors.joining(", "));
+                .mapToObj(i -> obfuscateSensitiveData(argNames[i], args[i]))
+                .collect(Collectors.joining(", "));
         try {
             Object result = joinPoint.proceed();
             logger.info(MessageFormat.format("Executed method {0}({1}). Result: {2}", methodName, argNamesAndValues, result));
             return result;
-        } catch(Exception e) {
+        } catch (Exception e) {
             logger.error(MessageFormat.format("Executed method {0}({1}). Threw exception: {2}", methodName, argNamesAndValues, e.getMessage()));
             throw e;
         }
     }
 
-    private String obfuscateSensitiveData(String key, Object value)
-    {
-        if (SENSITIVE_PARAM_NAMES.contains(key.toLowerCase()))
-        {
+    private String obfuscateSensitiveData(String key, Object value) {
+        if ( SENSITIVE_PARAM_NAMES.contains(key.toLowerCase()) ) {
             return MessageFormat.format("{0}:###", key);
         }
         return MessageFormat.format("{0}:{1}", key, value);

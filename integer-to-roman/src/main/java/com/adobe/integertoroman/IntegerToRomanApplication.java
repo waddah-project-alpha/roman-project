@@ -8,8 +8,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class IntegerToRomanApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(IntegerToRomanApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(IntegerToRomanApplication.class, args);
+    }
 
 }

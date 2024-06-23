@@ -12,16 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GlobalControllerExceptionHandling {
     @ExceptionHandler(InvalidIntegerToRomanInputException.class)
-    public ResponseEntity<String> handleInvalidInput(InvalidIntegerToRomanInputException ex)
-    {
+    public ResponseEntity<String> handleInvalidInput(InvalidIntegerToRomanInputException ex) {
         return new ResponseEntity<>("Invalid input received. Error: " + ex.getMessage(),
-                HttpStatusCode.valueOf(HttpStatus.BAD_REQUEST.value()));
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception ex)
-    {
-        return new ResponseEntity<>("An unexpected error has occurred. Please try again or contact our team",
                 HttpStatusCode.valueOf(HttpStatus.BAD_REQUEST.value()));
     }
 }

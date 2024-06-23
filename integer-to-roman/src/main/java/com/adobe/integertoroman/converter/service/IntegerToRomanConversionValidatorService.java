@@ -19,17 +19,15 @@ public class IntegerToRomanConversionValidatorService implements InitializingBea
     private BigInteger MIN_VALUE;
     private BigInteger MAX_VALUE;
 
-    public void validateInput(String numberToValidate)
-    {
-        if (numberToValidate == null || numberToValidate.isEmpty()) {
+    public void validateInput(String numberToValidate) {
+        if ( numberToValidate == null || numberToValidate.isEmpty() ) {
             throw new InvalidIntegerToRomanInputException("The number to convert cannot be null or empty");
         }
 
         BigInteger convertedNumber = null;
         try {
             convertedNumber = new BigInteger(numberToValidate);
-        }
-        catch (NumberFormatException _ex) {
+        } catch (NumberFormatException _ex) {
             throw new InvalidIntegerToRomanInputException(String.format("The value %s is not a valid number", numberToValidate));
         }
 
@@ -37,17 +35,15 @@ public class IntegerToRomanConversionValidatorService implements InitializingBea
     }
 
     public void validateInput(BigInteger numberToValidate) {
-        if (numberToValidate == null) {
+        if ( numberToValidate == null ) {
             throw new InvalidIntegerToRomanInputException("The number to convert cannot be null");
         }
 
-        if (numberToValidate.compareTo(MIN_VALUE) < 0)
-        {
+        if ( numberToValidate.compareTo(MIN_VALUE) < 0 ) {
             throw new InvalidIntegerToRomanInputException("The number to validate cannot be smaller than " + MIN_VALUE);
         }
 
-        if (numberToValidate.compareTo(MAX_VALUE) > 0)
-        {
+        if ( numberToValidate.compareTo(MAX_VALUE) > 0 ) {
             throw new InvalidIntegerToRomanInputException("The number to validate cannot be larger than " + MAX_VALUE);
         }
     }

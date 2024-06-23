@@ -13,14 +13,13 @@ public abstract class BaseConversionService {
 
     protected abstract TreeMap<BigInteger, String> getMap();
 
-    public String convert(BigInteger numberToConvert)
-    {
+    public String convert(BigInteger numberToConvert) {
         integerToRomanConversionValidatorService.validateInput(numberToConvert);
         return convertToRoman(numberToConvert, getMap());
     }
 
     private String convertToRoman(BigInteger numberToConvert, TreeMap<BigInteger, String> map) {
-        if (numberToConvert.compareTo(BigInteger.ZERO) == 0) {
+        if ( numberToConvert.compareTo(BigInteger.ZERO) == 0 ) {
             return "";
         }
         BigInteger floor = map.floorKey(numberToConvert);
