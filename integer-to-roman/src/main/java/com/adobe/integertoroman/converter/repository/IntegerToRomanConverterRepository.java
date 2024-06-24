@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 import java.util.TreeMap;
 
+/**
+ * This class simulates a repository in a real world app. It's used to return maps of major integer value representations
+ * in Roman notations, which will be used by a service to compute the actual roman representation of an integer
+ */
 @Repository
 public class IntegerToRomanConverterRepository {
 
@@ -18,6 +22,10 @@ public class IntegerToRomanConverterRepository {
         initializeVinculumShortNotationMap();
     }
 
+    /**
+     * The Vinculum map contains representations for key integers in Roman notation up to 1000000000. These exclude
+     * numbers that are used in the short notation representation, such as IV and IX
+     */
     private void initializeVinculumMap() {
         vinculumMap.put(new BigInteger("1"), "I");
         vinculumMap.put(new BigInteger("5"), "V");
@@ -40,6 +48,10 @@ public class IntegerToRomanConverterRepository {
         vinculumMap.put(new BigInteger("1000000000"), "M̿");
     }
 
+    /**
+     * The short notations map contain uniquely the integer representations that are used in Roman short notation form
+     * such as IV and IX
+     */
     private void initializeVinculumShortNotationMap() {
         vinculumShortNotationMap.putAll(vinculumMap);
         vinculumShortNotationMap.put(new BigInteger("4"), "IV");

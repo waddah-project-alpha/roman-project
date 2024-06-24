@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 
+/**
+ * The validator service ensures that a String or BigInteger passed as parameter can be converted to a Roman number.
+ * This filters out any nu,, empty, non-numeric values and values that fall out of range
+ */
 @Service
 public class IntegerToRomanConversionValidatorService implements InitializingBean {
 
@@ -19,6 +23,10 @@ public class IntegerToRomanConversionValidatorService implements InitializingBea
     private BigInteger MIN_VALUE;
     private BigInteger MAX_VALUE;
 
+    /**
+     * Validates a string input can be transformed into a roman representation. Throws an exception if not valid
+     * @param numberToValidate
+     */
     public void validateInput(String numberToValidate) {
         if ( numberToValidate == null || numberToValidate.isEmpty() ) {
             throw new InvalidIntegerToRomanInputException("The number to convert cannot be null or empty");
@@ -34,6 +42,10 @@ public class IntegerToRomanConversionValidatorService implements InitializingBea
         validateInput(convertedNumber);
     }
 
+    /**
+     * Validates a BigInteger input can be transformed into a roman representation. Throws an exception if not valid
+     * @param numberToValidate
+     */
     public void validateInput(BigInteger numberToValidate) {
         if ( numberToValidate == null ) {
             throw new InvalidIntegerToRomanInputException("The number to convert cannot be null");

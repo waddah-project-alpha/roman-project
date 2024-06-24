@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigInteger;
 
+/**
+ * This is the main controller for our app. This handles converting a supposed integer value to its roman representation
+ */
 @RestController
 @RequestMapping("/romannumeral")
 public class IntegerToRomanConverterController {
@@ -20,6 +23,13 @@ public class IntegerToRomanConverterController {
     @Autowired
     private IntegerToRomanConversionValidatorService integerToRomanConversionValidatorService;
 
+    /**
+     * Converts a string value provided by the user to its roman representation. It supports both long and short
+     * notations (for exp. IV and IIII), but defaults to the short notation, which is more widely used.
+     * @param numberToConvert
+     * @param useShortNotation
+     * @return the roman value representation
+     */
     @GetMapping
     public String convertIntegerToRoman(@RequestParam(name = "query") String numberToConvert,
                                         @RequestParam(required = false, defaultValue = "true") boolean useShortNotation) {

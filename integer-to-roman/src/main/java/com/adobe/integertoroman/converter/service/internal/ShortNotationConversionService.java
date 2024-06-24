@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigInteger;
 import java.util.TreeMap;
 
+/**
+ * Converts a integer to its Roman notation counterpart using Short notation
+ */
 @Service
 public class ShortNotationConversionService extends BaseConversionService {
 
