@@ -32,8 +32,8 @@ public class IntegerToRomanConverterController {
      */
     @GetMapping
     public String convertIntegerToRoman(@RequestParam(name = "query") String numberToConvert,
-                                        @RequestParam(required = false, defaultValue = "true") boolean useShortNotation) {
+                                        @RequestParam(required = false, defaultValue = "true") String useShortNotation) {
         integerToRomanConversionValidatorService.validateInput(numberToConvert);
-        return integerToRomanConverterService.convert(new BigInteger(numberToConvert), useShortNotation);
+        return integerToRomanConverterService.convert(new BigInteger(numberToConvert), Boolean.parseBoolean(useShortNotation));
     }
 }

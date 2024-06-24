@@ -24,39 +24,39 @@ public class IntegerToRomanConverterControllerTest {
     @MethodSource("com.adobe.integertoroman.utils.UnitTestValuesProvider#getInvalidIntValues")
     public void testShortNotationShouldThrowExceptionForInvalidNumbers(String value) {
         Assertions.assertThrows(InvalidIntegerToRomanInputException.class,
-                () -> controller.convertIntegerToRoman(value, true));
+                () -> controller.convertIntegerToRoman(value, "true"));
     }
 
     @ParameterizedTest
     @MethodSource("com.adobe.integertoroman.utils.UnitTestValuesProvider#getInvalidIntValues")
     public void testLongNotationShouldThrowExceptionForInvalidNumbers(String value) {
         Assertions.assertThrows(InvalidIntegerToRomanInputException.class,
-                () -> controller.convertIntegerToRoman(value, false));
+                () -> controller.convertIntegerToRoman(value, "false"));
     }
 
     @ValueSource(strings = {"", "test", "12235s", "invalid_value", "S65594"})
     public void testShortNotationShouldThrowExceptionForInvalidStrings(String value) {
         Assertions.assertThrows(InvalidIntegerToRomanInputException.class,
-                () -> controller.convertIntegerToRoman(value, true));
+                () -> controller.convertIntegerToRoman(value, "true"));
     }
 
     @ValueSource(strings = {"", "test", "12235s", "invalid_value", "S65594"})
     public void testLongNotationShouldThrowExceptionForInvalidStrings(String value) {
         Assertions.assertThrows(InvalidIntegerToRomanInputException.class,
-                () -> controller.convertIntegerToRoman(value,false));
+                () -> controller.convertIntegerToRoman(value,"false"));
     }
 
     @ParameterizedTest
     @MethodSource("com.adobe.integertoroman.utils.UnitTestValuesProvider#getValidValuesMapShortFormat")
     public void testShortNotationConvertsValidValues(String integer, String expectedRomanValue) {
         Assertions.assertEquals(expectedRomanValue,
-                                controller.convertIntegerToRoman(integer,true));
+                                controller.convertIntegerToRoman(integer,"true"));
     }
 
     @ParameterizedTest
     @MethodSource("com.adobe.integertoroman.utils.UnitTestValuesProvider#getValidValuesMapLongFormat")
     public void testLongNotationConvertsValidValues(String integer, String expectedRomanValue) {
         Assertions.assertEquals(expectedRomanValue,
-                controller.convertIntegerToRoman(integer,false));
+                controller.convertIntegerToRoman(integer,"false"));
     }
 }
